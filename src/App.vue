@@ -8,10 +8,11 @@ export default {
   data() {
     return {
       // RICHIAMO STORE NEL DATA
-      store
+      store,
     
       // PROVE BANDIERE 
-      // selectedLanguage: "en"
+      selectedLanguage: "it"
+      
     };
   },
   created() {
@@ -26,13 +27,24 @@ export default {
       console.log(resp);
     });
   },
+  methods: {
+
+    // PROVE BANDIERE 
+    getImageUrl(name){
+      return new URL(`./assets/img/${name}.webp`, import.meta.url).href
+    }
+  }
 };
 </script>
 
 <template> 
 Ciao
-
 <i class="fa-solid fa-house"></i>
+
+<!-- PROVE BANDIERE  -->
+<img :src="getImageUrl(selectedLanguage)" alt="" />
+
+
 </template>
 
 <style>
