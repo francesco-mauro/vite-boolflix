@@ -13,9 +13,8 @@ export default {
 <template>
     <header> 
         <!-- inserito aria label per facilitare screen reader -->
-        <input type="text" aria-label="Inizia la ricerca" v:model="store.searchQuery">
-        <button @click="$emit('performSearch')"> Cerca </button>
-
+        <input type="text" aria-label="Inizia la ricerca" v:model.trim="store.searchQuery">
+        <button @click="$emit('performSearch'); console.log('Evento performSearch check');">Cerca</button>
     </header>
 </template>
 
