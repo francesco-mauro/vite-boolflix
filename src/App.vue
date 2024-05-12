@@ -49,24 +49,7 @@ export default {
 </script>
 
 <template> 
-Ciao
-<i class="fa-solid fa-house"></i>
 
-<!-- PROVE BANDIERE  -->
-<img :src="getImageUrl(selectedLanguage)" alt="" />
-
-<div v-if="isLoading">Is loading...</div>
-<div v-else>
-<section>
-  <h2>  Movies  </h2>
-  <div v-for="movie in arrayMovies"> {{ movie }} </div>
-</section>
-
-<section>
-  <h2>  TV  </h2>
-  <div v-for="tv in arrayTv"> {{ tv }} </div>
-</section>
-</div>
 
 </template>
 
