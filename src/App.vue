@@ -11,20 +11,25 @@ export default {
       store,
     
       // PROVE BANDIERE 
-      // selectedLanguage: "it"
+      selectedLanguage: "it",
       // PROVE BANDIERE 
-      // flags:["en", "it"]
+      flags:["fr", "it", "de"],
 
       // PROVA ARRAY FILM/TV 
       arrayMovies: ["movie 1", "movie 2", "movie 3",],
       arrayTv: ["tv 1", "tv 2", "tv 3",],
       isLoading: false,
 
-
     };
   },
-  created() {
-    this.isLoading = true;
+  methods: {
+
+    // PROVE BANDIERE 
+    getImageUrl(name){
+      return new URL(`./assets/img/${name}.webp`, import.meta.url).href
+    },
+    getMovies () {
+      this.isLoading = true;
     // CHIAMATA AXIOS 
     axios.get("https://api.themoviedb.org/3/search/movie", {
       params: {
@@ -41,13 +46,8 @@ export default {
     console.error('Errore durante la richiesta Axios:', error);
     this.isLoading = false; 
   });
-  },
-  methods: {
 
-    // PROVE BANDIERE 
-    // getImageUrl(name){
-    //   return new URL(`./assets/img/${name}.webp`, import.meta.url).href
-    // }
+    }
   }
 };
 </script>
@@ -57,7 +57,7 @@ Ciao
 <i class="fa-solid fa-house"></i>
 
 <!-- PROVE BANDIERE  -->
-<!-- <img :src="getImageUrl(selectedLanguage)" alt="" /> -->
+<img :src="getImageUrl(selectedLanguage)" alt="" />
 
 <div v-if="isLoading">Is loading...</div>
 <div v-else>
