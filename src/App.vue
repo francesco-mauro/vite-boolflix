@@ -24,10 +24,6 @@ export default {
   },
   methods: {
 
-    // PROVE BANDIERE 
-    getImageUrl(name){
-      return new URL(`./assets/img/${name}.webp`, import.meta.url).href
-    },
     getMovies () {
       this.isLoading = true;
     // CHIAMATA AXIOS 
