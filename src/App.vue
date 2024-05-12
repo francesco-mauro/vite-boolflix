@@ -11,8 +11,15 @@ export default {
       store,
     
       // PROVE BANDIERE 
-      selectedLanguage: "it"
-      
+      // selectedLanguage: "it"
+      // PROVE BANDIERE 
+      // flags:["en", "it"]
+
+      // PROVA ARRAY FILM/TV 
+      arrayMovies: ["movie 1", "movie 2", "movie 3",],
+      arrayTv: ["tv 1", "tv 2", "tv 3",],
+
+
     };
   },
   created() {
@@ -20,7 +27,7 @@ export default {
     axios.get("https://api.themoviedb.org/3/search/movie", {
       params: {
         api_key: this.store.apiKey,
-        query: "ciao"
+        query: "ciao",
       }
     }).then((resp) => {
       // CONSOLE LOG PER VERIFICA 
@@ -30,9 +37,9 @@ export default {
   methods: {
 
     // PROVE BANDIERE 
-    getImageUrl(name){
-      return new URL(`./assets/img/${name}.webp`, import.meta.url).href
-    }
+    // getImageUrl(name){
+    //   return new URL(`./assets/img/${name}.webp`, import.meta.url).href
+    // }
   }
 };
 </script>
@@ -42,7 +49,17 @@ Ciao
 <i class="fa-solid fa-house"></i>
 
 <!-- PROVE BANDIERE  -->
-<img :src="getImageUrl(selectedLanguage)" alt="" />
+<!-- <img :src="getImageUrl(selectedLanguage)" alt="" /> -->
+
+<section>
+  <h2>  Movies  </h2>
+  <div v-for="movie in arrayMovies"> {{ movie }} </div>
+</section>
+
+<section>
+  <h2>  TV  </h2>
+  <div v-for="tv in arrayTv"> {{ tv }} </div>
+</section>
 
 
 </template>
