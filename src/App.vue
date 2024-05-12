@@ -36,7 +36,11 @@ export default {
       console.log(resp);
       this.isLoading = false;
 
-    });
+      // IMPOSTAZIONE DI CATCH IN CASO DI ERRORI CON AGGIORNAMENRTO DI ISLOADING A FALSE PER EVITARE ERRORI DI CARICAMENTO
+    }).catch((error) => {
+    console.error('Errore durante la richiesta Axios:', error);
+    this.isLoading = false; 
+  });
   },
   methods: {
 
