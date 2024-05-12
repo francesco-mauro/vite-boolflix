@@ -18,11 +18,13 @@ export default {
       // PROVA ARRAY FILM/TV 
       arrayMovies: ["movie 1", "movie 2", "movie 3",],
       arrayTv: ["tv 1", "tv 2", "tv 3",],
+      isLoading: false,
 
 
     };
   },
   created() {
+    this.isLoading = true;
     // CHIAMATA AXIOS 
     axios.get("https://api.themoviedb.org/3/search/movie", {
       params: {
@@ -32,6 +34,8 @@ export default {
     }).then((resp) => {
       // CONSOLE LOG PER VERIFICA 
       console.log(resp);
+      this.isLoading = false;
+
     });
   },
   methods: {
@@ -51,6 +55,8 @@ Ciao
 <!-- PROVE BANDIERE  -->
 <!-- <img :src="getImageUrl(selectedLanguage)" alt="" /> -->
 
+<div v-if="isLoading">Is loading...</div>
+<div v-else>
 <section>
   <h2>  Movies  </h2>
   <div v-for="movie in arrayMovies"> {{ movie }} </div>
@@ -60,7 +66,7 @@ Ciao
   <h2>  TV  </h2>
   <div v-for="tv in arrayTv"> {{ tv }} </div>
 </section>
-
+</div>
 
 </template>
 
