@@ -3,8 +3,14 @@
 import axios from "axios";
 // IMPORTO STORE JS, POI LO DICHIARO NEL DATA
 import {store} from "./store.js";
+// IMPORTO AppHeader, POI LO DICHIARO NEL TEMPLATE
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
+  components:{
+    AppHeader,
+  },
+
   data() {
     return {
       // RICHIAMO STORE NEL DATA
@@ -23,7 +29,6 @@ export default {
     };
   },
   methods: {
-
     getMovies () {
       this.isLoading = true;
     // CHIAMATA AXIOS 
@@ -49,8 +54,7 @@ export default {
 </script>
 
 <template> 
-
-
+  <AppHeader />
 </template>
 
 <style>
