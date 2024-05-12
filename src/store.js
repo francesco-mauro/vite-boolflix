@@ -7,7 +7,7 @@ export const store = reactive ({
     apiKey: "56d0da0724cca01e3a2163418cea2cae",
     
     // valore che sarà nella barra di ricerca, che probabilmente collocherò in AppHeader
-    searchQuery: " ",
+    searchQuery: "",
 
     // array per i film 
     moviesArray: [],
