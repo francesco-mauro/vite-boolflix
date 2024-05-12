@@ -5,10 +5,13 @@ import axios from "axios";
 import {store} from "./store.js";
 // IMPORTO AppHeader, POI LO DICHIARO NEL TEMPLATE
 import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+
 
 export default {
   components:{
     AppHeader,
+    AppMain,
   },
 
   data() {
@@ -29,18 +32,24 @@ export default {
     };
   },
   methods: {
+
+    getData() {
+    
+      // LOG DI VERIFICA 
+      console.log("prova funzioamento funzione funzionale");
+      this.getMovies();
+    },
     getMovies () {
       this.isLoading = true;
     // CHIAMATA AXIOS 
     axios.get("https://api.themoviedb.org/3/search/movie", {
       params: {
         api_key: this.store.apiKey,
-        query: "ciao",
+        query: this.store.searchQuery,
       }
     }).then((resp) => {
       // CONSOLE LOG PER VERIFICA 
-      console.log(resp);
-      this.isLoading = false;
+      this.store.moviesArray = resp.data.results;
 
       // IMPOSTAZIONE DI CATCH IN CASO DI ERRORI CON AGGIORNAMENRTO DI ISLOADING A FALSE PER EVITARE ERRORI DI CARICAMENTO
     }).catch((error) => {
@@ -48,13 +57,15 @@ export default {
     this.isLoading = false; 
   });
 
-    }
-  }
+    },
+  },
 };
 </script>
 
 <template> 
-  <AppHeader />
+  <AppHeader @performSearch="getData"/>
+  <AppMain />
+
 </template>
 
 <style>
