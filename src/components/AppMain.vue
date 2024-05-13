@@ -18,6 +18,7 @@ export default{
 
 <template>
     <main>
+        <!-- film  -->
         <div>
             <h2>Film</h2>
             <div v-for = "movie in store.moviesArray">
@@ -25,6 +26,15 @@ export default{
                <!-- verifica di funzionamento movie  -->
                 <!-- {{ movie.title }} -->
             </div>
+        </div>
+
+        <!-- serie tv -->
+        <div>
+            <h2>Serie TV</h2>
+            <div v-for="tv in store.tvArray">
+                <AppCard :cardObj="tv" />
+            </div>
+
         </div>
     </main>
 </template>

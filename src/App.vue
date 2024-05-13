@@ -36,6 +36,8 @@ export default {
       // console.log("prova funzioamento funzione funzionale");
       console.log("performSearch ricevuto");
       this.getMovies();
+      this.getTv();
+
     },
     getMovies() {
       this.isLoading = true;
@@ -62,6 +64,17 @@ export default {
       }).catch((error) => {
         console.error('Errore durante la richiesta Axios:', error);
         this.isLoading = false; 
+      });
+    },
+    getTv() {
+      axios.get("https://api.themoviedb.org/3/search/tv", {
+        params: {
+          api_key: this.store.apiKey,
+          query: this.store.searchQuery,
+        }
+      }).then((resp) => {
+        // console.log(resp);
+        this.store.tvArray = resp.data.results;
       });
     },
   },
